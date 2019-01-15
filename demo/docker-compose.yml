@@ -1,0 +1,19 @@
+version: '2'
+services:
+  server:
+    build: './server'
+    ports:
+      - '8000:8000'
+  locust-master:
+    image: swernst/locusts
+    ports:
+      - '8089:8089'
+    volumes:
+      - ./tests/locust:/scripts
+      - ./tests/user_client:/user_client
+  locust:
+    image: swernst/locusts
+    command: "--master-host=locust-master"
+    volumes:
+      - ./tests/locust:/scripts
+      - ./tests/user_client:/user_client

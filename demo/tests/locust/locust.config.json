@@ -1,0 +1,4 @@
+{
+  "target": "http://server:8000",
+  "locusts": ["WebsiteUser"]
+}
